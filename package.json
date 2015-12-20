@@ -12,6 +12,7 @@
   "bin": {
     "cantaloupe": "cantaloupe.js"
   },
+  "repository": "mbseid/cantaloupe-cli",
   "author": "Mike Seid <mbseid@gmail.com>",
   "license": "ISC",
   "dependencies": {
