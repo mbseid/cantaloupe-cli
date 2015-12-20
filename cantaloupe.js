@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var prompt = require('prompt');
 var request = require('superagent');
 var savedSettingsFileName = ".cantaloupe";
