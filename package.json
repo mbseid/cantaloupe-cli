@@ -1,0 +1,25 @@
+{
+  "name": "cantaloupe-cli",
+  "version": "1.0.0",
+  "description": "Command Line interface for the awesome cantaloupe.io",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cantaloupe",
+    "hosting"
+  ],
+  "bin": {
+    "cantaloupe": "cantaloupe.js"
+  },
+  "author": "Mike Seid <mbseid@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^6.0.1",
+    "lodash": "^3.10.1",
+    "prompt": "^0.2.14",
+    "regex": "^0.1.1",
+    "superagent": "^1.6.1",
+    "yargs": "^3.31.0"
+  }
+}
