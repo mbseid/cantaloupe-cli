@@ -75,16 +75,18 @@ function deploy(location, url){
       url: url
     }))
 
-  glob(location+"/**", {
+  glob(location+"**", {
     nodir: true
   }, function (er, files) {
-    console.log("Deploying all the files found in the location"+location, files);
-    for(var i = 0; i < files.length; files++){
-      deployRequest = deployRequest.attach("file["+i+"]", files[i]) 
+    var filesAdded = 0;
+    console.log("Deploying "+files.length+" files found in the location "+location, files);
+    for(var i = 0; i < files.length; i++){
+      filesAdded = filesAdded + 1;
+      deployRequest = deployRequest.attach("files["+i+"]", files[i], files[i].replace(location, ""));
     }
     deployRequest.end(function(err, res){
       if(res.statusCode == 200){
-        console.log("Deploy was successful!")
+        console.log("Deployed "+filesAdded+" files successfully!", deployRequest)
       }else{
         if(err){
           console.error("There was an error deploying", err)
@@ -108,6 +110,6 @@ switch(command){
       console.error("To deploy you need to specify a site: cantaloupe deploy --site site-name")
       return;
     }
-    deploy("build", argv.site+".cantaloupe.io");
+    deploy("build/", argv.site+".cantaloupe.io");
     break;
 }
