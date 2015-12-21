@@ -13,14 +13,11 @@ Make sure to have NodeJS installed. Version 4.2 or great is required.
 
 Make sure to be in the root of your project folder.
 
-*. `cantaloupe login`
-
-  *. Enter credentials
-  *. They will be saved in the file `.cantaloupe`
-
-*. `cantaloupe deploy --site site-name`
-
-  *. site-name is the site name that was created when you made your cantaloupe site.
+* `cantaloupe login`
+  * Enter credentials
+  * They will be saved in the file `.cantaloupe`
+* `cantaloupe deploy --site site-name`
+  * site-name is the site name that was created when you made your cantaloupe site.
 
 Currently, it will only deploy files from the `build` folder. This is built for [Middleman](https://middlemanapp.com/) at the current moment. Future versions will allow you to specify the files to deploy.
 
