@@ -31,6 +31,7 @@ Currently, it will only deploy files from the `build` folder. This is built for 
 
 ## History
 
+Version 
 Version 1.0: Adding basic login and deploy functionality. Will only deploy items in the relative "build" folder.
 
 ## License
