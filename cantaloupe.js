@@ -8,6 +8,8 @@ var process = require('process');
 var lodash = require('lodash');
 var Regex = require("regex");
 var glob = require("glob");
+var fetch = require('node-fetch');
+var FormData = require('./form-data');
 
 //Remove this once cantaloupe.io fixes their HTTPS cert
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
@@ -66,14 +68,10 @@ function deploy(location, url){
     login();
     return;
   }
-  var deployRequest = request
-    .post("https://cantaloupe.io/v1/site/deploy")
-    .set( 'Cookie', "session="+creds.cookie)
-    .type('form')
-    .set('Accept', 'application/json')
-    .field('site', JSON.stringify({
+  var formData = new FormData();
+  formData.append('site', JSON.stringify({
       url: url
-    }))
+  }));
 
   glob(location+"**", {
     nodir: true
@@ -82,19 +80,18 @@ function deploy(location, url){
     console.log("Deploying "+files.length+" files found in the location "+location, files);
     for(var i = 0; i < files.length; i++){
       filesAdded = filesAdded + 1;
-      deployRequest = deployRequest.attach("files["+i+"]", files[i], files[i].replace(location, ""));
+      formData.append(files[i].replace(location, ""), fs.createReadStream(files[i]), files[i].replace(location, ""));
     }
-    deployRequest.end(function(err, res){
-      if(res.statusCode == 200){
-        console.log("Deployed "+filesAdded+" files successfully!", deployRequest)
-      }else{
-        if(err){
-          console.error("There was an error deploying", err)
-        }else{
-          console.error("There was an unknown error deploying")
-        }
+    fetch('https://cantaloupe.io/v1/site/deploy', {
+      method: 'POST',
+      body: formData,
+      headers: {
+       Cookie: "session="+creds.cookie
       }
+    }).then(function(res) {
+      console.log("Deploy complete :)")
     });
+    
   })
   
 }

@@ -1,6 +1,6 @@
 # cantaloupe-cli
 
-This isn't ready yet, please hold off from using until it is stable.
+The command line tool to make cantaloupe even more awesome. Start publishing static sites with ease. [https://cantaloupe.io](https://cantaloupe.io)
 
 ## Installation
 
