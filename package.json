@@ -1,6 +1,6 @@
 {
   "name": "cantaloupe-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Command Line interface for the awesome cantaloupe.io",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
