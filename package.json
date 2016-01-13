@@ -7,7 +7,8 @@
   },
   "keywords": [
     "cantaloupe",
-    "hosting"
+    "hosting",
+    "static sites"
   ],
   "bin": {
     "cantaloupe": "cantaloupe.js"
@@ -16,7 +17,9 @@
   "author": "Mike Seid <mbseid@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "form-data": "^1.0.0-rc3",
+    "async": "^1.4.0",
+    "combined-stream": "^1.0.5",
+    "mime-types": "^2.1.3",
     "glob": "^6.0.1",
     "lodash": "^3.10.1",
     "node-fetch": "^1.3.3",
